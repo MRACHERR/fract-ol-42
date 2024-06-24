@@ -6,7 +6,7 @@
 /*   By: acherraq <acherraq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 17:12:09 by acherraq          #+#    #+#             */
-/*   Updated: 2024/06/14 22:51:44 by acherraq         ###   ########.fr       */
+/*   Updated: 2024/06/24 20:39:27 by acherraq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,13 @@ double	ft_atod(const char *str)
 	sign = 1;
 	i = 0;
 	j = 1;
+	// if (str[i] == '-' || str[i] == '+')
+	// 	sign = 44 - str[i++];
 	if (str[i] == '-' || str[i] == '+')
-		sign = 44 - str[i++];
+	{
+    	sign = (str[i] == '-') ? -1 : 1;
+    	i++;
+	}
 	while (str[i] && str[i] != '.')
 		res = res * 10 + str[i++] - '0';
 	if (str[i++] == '.')
