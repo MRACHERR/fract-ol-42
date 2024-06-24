@@ -6,7 +6,7 @@
 /*   By: acherraq <acherraq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 17:12:04 by acherraq          #+#    #+#             */
-/*   Updated: 2024/06/14 21:35:39 by acherraq         ###   ########.fr       */
+/*   Updated: 2024/06/24 21:37:59 by acherraq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ typedef struct s_fractal
 void	handle_errors(char *error_msg);
 int	ft_strcmp(const char *s1, const char *s2);
 int	ft_valid_nb(char *str);
+void graphe_mandlebrot_init(t_fractal *fractal);
+void	graphe_julia_init(t_fractal *fractal);
 # define WINDOW_WIDTH 800
 # define WINDOW_HEIGHT 800
 #endif

@@ -6,7 +6,7 @@
 /*   By: acherraq <acherraq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 17:12:09 by acherraq          #+#    #+#             */
-/*   Updated: 2024/06/24 20:39:27 by acherraq         ###   ########.fr       */
+/*   Updated: 2024/06/24 21:38:13 by acherraq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,13 @@ void	graphe_mandlebrot_init(t_fractal *fractal)
 	fractal->max_iter = 100;
 	fractal->color = 0x000CF7EA;
 }
+
+void	graphe_julia_init(t_fractal *fractal)
+{
+	
+}
+
+
 void	fractal_initialize(t_fractal *fractal, char *name)
 {
 	fractal->name = name;
@@ -109,8 +116,7 @@ void	fractal_initialize(t_fractal *fractal, char *name)
 	fractal->mlx = mlx_init();
 	if (!fractal->mlx)
 		handle_errors("mlx faild!");
-	fractal->window = mlx_new_windows(fractal->mlx, fractal->width, fractal->height, fractal->name)
-	
+	fractal->window = mlx_new_windows(fractal->mlx, fractal->width, fractal->height, fractal->name);	
 	if (!fractal->window)
 	{
 		mlx_destroy_window(fractal->mlx, fractal->window);
