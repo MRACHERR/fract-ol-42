@@ -6,7 +6,7 @@
 /*   By: acherraq <acherraq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 17:12:00 by acherraq          #+#    #+#             */
-/*   Updated: 2024/06/24 20:49:27 by acherraq         ###   ########.fr       */
+/*   Updated: 2024/06/25 22:19:35 by acherraq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,19 @@ int main(int argc, char **argv)
     fractal = (t_fractal *)malloc(sizeof(t_fractal));
 	if (!fractal)
 		handle_errors("malloc error\n");
-    fractal->name = ft_tolower(argv[1]);
+    fractal->name = ft_tolow(argv[1]);
     fractal_init(fractal, argc, argv);
+    mlx_loop(fractal->mlx);
+    mlx_mouse_hook(fractal->window, mouse_hook, fractal);
+    mlx_hook(fractal->window, 17, 0, close_window, fractal);
     
+	return (0);
 }
 
 void fractal_init(t_fractal *fractal, int argc,char **argv)
 {
-    if (ft_strcmp(fractal->name , "mandelbrot") && argc == 2)
+    ft_printf("%s\n", fractal->name);
+    if (!ft_strcmp(fractal->name , "mandelbrot") && argc == 2)
         graphe_mandlebrot_init(fractal);
     else if (ft_strcmp(fractal->name , "julia") && argc == 4
                  && ft_valid_nb(argv[2]) && ft_valid_nb(argv[3]))
@@ -38,7 +43,7 @@ void fractal_init(t_fractal *fractal, int argc,char **argv)
             free(fractal);
             handle_errors("invalid number \n");            
         }
-        graphe_julia_init(fractal);
+        // graphe_julia_init(fractal);
     }
     else
     {
@@ -49,6 +54,7 @@ void fractal_init(t_fractal *fractal, int argc,char **argv)
 
 void arg_verify(int argc, char **argv)
 {
+    (void) **argv;
     if (argc != 2 && argc != 4)
 		handle_errors(ERROR_message);
     

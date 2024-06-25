@@ -6,7 +6,7 @@
 #    By: acherraq <acherraq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/08 17:11:54 by acherraq          #+#    #+#              #
-#    Updated: 2024/06/08 17:12:15 by acherraq         ###   ########.fr        #
+#    Updated: 2024/06/25 20:32:55 by acherraq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,9 @@ OBJECTS = $(SOURCES:.c=.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
+MLX = -lmlx -framework OpenGL -framework AppKit
 $(NAME) : $(OBJECTS) printf/libftprintf.a libft/libft.a minilibx_opengl_20191021/libmlx.a
-	$(CC) $(CFLAGS) $(OBJECTS) -o fractol -Llibft -lft -Lprintf -lftprintf minilibx_opengl_20191021/libmlx.a
+	$(CC) $(CFLAGS) $(OBJECTS) -o fractol -Llibft -lft -Lprintf -lftprintf $(MLX) 
 
 %.o : %.c fractol.h | libft printf libmlx
 	$(CC) $(CFLAGS) -c $< -o $@ 

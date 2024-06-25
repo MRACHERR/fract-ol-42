@@ -6,7 +6,7 @@
 /*   By: acherraq <acherraq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 17:12:04 by acherraq          #+#    #+#             */
-/*   Updated: 2024/06/24 21:37:59 by acherraq         ###   ########.fr       */
+/*   Updated: 2024/06/25 20:33:37 by acherraq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define FRACTOL_H
 # include "libft/libft.h"
 # include "printf/ft_printf.h"
+# include <math.h>
+# include "mlx.h"
 # include <limits.h>
 typedef struct s_fractal
 {
@@ -42,7 +44,17 @@ void	handle_errors(char *error_msg);
 int	ft_strcmp(const char *s1, const char *s2);
 int	ft_valid_nb(char *str);
 void graphe_mandlebrot_init(t_fractal *fractal);
-void	graphe_julia_init(t_fractal *fractal);
+// void	graphe_julia_init(t_fractal *fractal);
+void	draw_mandelbrot(t_fractal *fractal);
+void arg_verify(int argc, char **argv);
+char	*ft_tolow(char *str);
+void fractal_init(t_fractal *fractal, int argc,char **argv);
+void fractal_init(t_fractal *fractal, int argc,char **argv);
+double	ft_atod(const char *str);
+void	fractal_initialize(t_fractal *fractal, char *name);
+void	draw_mandelbrot(t_fractal *fractal);
+void calcule_pixel_mandelbrot(t_fractal *fractal, int x, int y);
+double	map(double unscated_num, double new_min, double new_max, double old_max);
 # define WINDOW_WIDTH 800
 # define WINDOW_HEIGHT 800
 #endif

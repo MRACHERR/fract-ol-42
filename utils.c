@@ -6,7 +6,7 @@
 /*   By: acherraq <acherraq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 17:12:09 by acherraq          #+#    #+#             */
-/*   Updated: 2024/06/24 21:38:13 by acherraq         ###   ########.fr       */
+/*   Updated: 2024/06/25 22:04:22 by acherraq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,13 +99,14 @@ void	graphe_mandlebrot_init(t_fractal *fractal)
 	fractal->move_x = 0;
 	fractal->move_y = 0;
 	fractal->max_iter = 100;
-	fractal->color = 0x000CF7EA;
+	fractal->color = 0x000C17EA;
+	draw_mandelbrot(fractal);
 }
 
-void	graphe_julia_init(t_fractal *fractal)
-{
+// void	graphe_julia_init(t_fractal *fractal)
+// {
 	
-}
+// }
 
 
 void	fractal_initialize(t_fractal *fractal, char *name)
@@ -116,12 +117,90 @@ void	fractal_initialize(t_fractal *fractal, char *name)
 	fractal->mlx = mlx_init();
 	if (!fractal->mlx)
 		handle_errors("mlx faild!");
-	fractal->window = mlx_new_windows(fractal->mlx, fractal->width, fractal->height, fractal->name);	
+	fractal->window = mlx_new_window(fractal->mlx, fractal->width, fractal->height, fractal->name);	
 	if (!fractal->window)
 	{
 		mlx_destroy_window(fractal->mlx, fractal->window);
 		free(fractal->mlx);
 		handle_errors("faild!");
 	}
+	fractal->image = mlx_new_image(fractal->mlx, fractal->width, fractal->height);
+	if (!fractal->image)
+	{
+		mlx_destroy_window(fractal->mlx, fractal->window);
+		mlx_destroy_image(fractal->mlx, fractal->image);
+		free(fractal->mlx);
+		handle_errors("error image");
+	}
+	fractal->addr = (int *)mlx_get_data_addr(fractal->image, &fractal->bits_per_pixel, &fractal->line_length, &fractal->endian);
+}
+
+void	draw_mandelbrot(t_fractal *fractal)
+{
+	int x;
+	int y;
 	
+	y = 0;
+	while (y < fractal->height)
+	{
+		x = 0;
+		while (x < fractal->width)
+		{
+			calcule_pixel_mandelbrot(fractal, x, y);
+			x++;	
+		}
+		y++;
+	}
+	mlx_put_image_to_window(fractal->mlx, fractal->window, fractal->image, 0 , 0);
+	
+}
+
+void calcule_pixel_mandelbrot(t_fractal *fractal, int x, int y)
+{
+	double z_re;
+	double z_im;
+	double tmp;
+	int i;
+
+	z_im = 0;
+	z_re = 0;
+	i = 0;
+	fractal->c_re = map(x, -2, 2, fractal->width) * fractal->zoom + fractal->move_x;
+	fractal->c_im = map(y, 2, -2, fractal->height) * fractal->zoom + fractal->move_y;
+	while (z_re * z_re + z_im * z_im < 4 && i < fractal->max_iter)
+	{
+		tmp = z_re;
+		z_re = z_re * z_re - z_im * z_im + fractal->c_re;
+		z_im = 2 * z_im * tmp + fractal->c_im;
+		i++;
+	}
+	if (i == fractal->max_iter)
+		fractal->addr[y * fractal->width + x] = 0x00000000;
+	else
+		fractal->addr[y * fractal->width + x] = i * fractal->color;
+	
+	
+}
+
+double	map(double unscated_num, double new_min, double new_max, double old_max)
+{
+	double	old_min;
+	
+	old_min = 0;
+	return ((new_max - new_min) * (unscated_num - old_min) / (old_max - old_min) + new_min);
+	
+}
+
+char	*ft_tolow(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] >= 'A' && str[i] <= 'Z')
+			str[i] += 32;
+		i++;
+	}
+	return (str);
 }
