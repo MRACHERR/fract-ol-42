@@ -6,7 +6,7 @@
 /*   By: acherraq <acherraq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 17:12:04 by acherraq          #+#    #+#             */
-/*   Updated: 2024/06/25 20:33:37 by acherraq         ###   ########.fr       */
+/*   Updated: 2024/06/26 17:06:33 by acherraq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,11 @@ void	fractal_initialize(t_fractal *fractal, char *name);
 void	draw_mandelbrot(t_fractal *fractal);
 void calcule_pixel_mandelbrot(t_fractal *fractal, int x, int y);
 double	map(double unscated_num, double new_min, double new_max, double old_max);
-void draw_julia(t_fractal fractal);
+void draw_julia(t_fractal *fractal);
 void	graphe_julia_init(t_fractal *fractal, double c_re, double c_im);
+void calcule_pixel_julia(t_fractal *fractal, int x, int y);
+int	mouse_hook(int button, int x, int y, t_fractal *fractal);
+int	close_window(t_fractal *fractal);
 # define WINDOW_WIDTH 800
 # define WINDOW_HEIGHT 800
 #endif

@@ -1,4 +1,4 @@
-#include <fractol.h>
+#include "fractol.h"
 
 void draw_julia(t_fractal *fractal)
 {

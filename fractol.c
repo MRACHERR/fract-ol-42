@@ -6,7 +6,7 @@
 /*   By: acherraq <acherraq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 17:12:00 by acherraq          #+#    #+#             */
-/*   Updated: 2024/06/25 22:19:35 by acherraq         ###   ########.fr       */
+/*   Updated: 2024/06/26 17:08:22 by acherraq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int main(int argc, char **argv)
 		handle_errors("malloc error\n");
     fractal->name = ft_tolow(argv[1]);
     fractal_init(fractal, argc, argv);
-    mlx_loop(fractal->mlx);
     mlx_mouse_hook(fractal->window, mouse_hook, fractal);
     mlx_hook(fractal->window, 17, 0, close_window, fractal);
+    mlx_loop(fractal->mlx);
     
 	return (0);
 }
@@ -34,7 +34,7 @@ void fractal_init(t_fractal *fractal, int argc,char **argv)
     ft_printf("%s\n", fractal->name);
     if (!ft_strcmp(fractal->name , "mandelbrot") && argc == 2)
         graphe_mandlebrot_init(fractal);
-    else if (ft_strcmp(fractal->name , "julia") && argc == 4
+    else if (!ft_strcmp(fractal->name , "julia") && argc == 4
                  && ft_valid_nb(argv[2]) && ft_valid_nb(argv[3]))
     {
         if (ft_atod(argv[2]) >= INT_MAX || ft_atod(argv[3]) >= INT_MAX
