@@ -76,8 +76,8 @@ double	ft_atod(const char *str)
 	// 	sign = 44 - str[i++];
 	if (str[i] == '-' || str[i] == '+')
 	{
-    	sign = (str[i] == '-') ? -1 : 1;
-    	i++;
+		sign = (str[i] == '-') ? -1 : 1;
+		i++;
 	}
 	while (str[i] && str[i] != '.')
 		res = res * 10 + str[i++] - '0';
@@ -91,12 +91,6 @@ double	ft_atod(const char *str)
 	return ((res + res2) * sign);
 }
 
-
-
-
-
-
-
 void	fractal_initialize(t_fractal *fractal, char *name)
 {
 	fractal->name = name;
@@ -105,14 +99,16 @@ void	fractal_initialize(t_fractal *fractal, char *name)
 	fractal->mlx = mlx_init();
 	if (!fractal->mlx)
 		handle_errors("mlx faild!");
-	fractal->window = mlx_new_window(fractal->mlx, fractal->width, fractal->height, fractal->name);	
+	fractal->window = mlx_new_window(fractal->mlx, fractal->width,
+			fractal->height, fractal->name);
 	if (!fractal->window)
 	{
 		mlx_destroy_window(fractal->mlx, fractal->window);
 		free(fractal->mlx);
 		handle_errors("faild!");
 	}
-	fractal->image = mlx_new_image(fractal->mlx, fractal->width, fractal->height);
+	fractal->image = mlx_new_image(fractal->mlx, fractal->width,
+			fractal->height);
 	if (!fractal->image)
 	{
 		mlx_destroy_window(fractal->mlx, fractal->window);
@@ -120,15 +116,17 @@ void	fractal_initialize(t_fractal *fractal, char *name)
 		free(fractal->mlx);
 		handle_errors("error image");
 	}
-	fractal->addr = (int *)mlx_get_data_addr(fractal->image, &fractal->bits_per_pixel, &fractal->line_length, &fractal->endian);
+	fractal->addr = (int *)mlx_get_data_addr(fractal->image,
+			&fractal->bits_per_pixel, &fractal->line_length, &fractal->endian);
 }
 
 double	map(double unscated_num, double new_min, double new_max, double old_max)
 {
 	double	old_min;
-	
+
 	old_min = 0;
-	return ((new_max - new_min) * (unscated_num - old_min) / (old_max - old_min) + new_min);	
+	return ((new_max - new_min) * (unscated_num - old_min) / (old_max - old_min)
+		+ new_min);
 }
 
 char	*ft_tolow(char *str)
