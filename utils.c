@@ -6,7 +6,7 @@
 /*   By: acherraq <acherraq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 17:12:09 by acherraq          #+#    #+#             */
-/*   Updated: 2024/06/26 15:00:25 by acherraq         ###   ########.fr       */
+/*   Updated: 2024/06/26 17:18:54 by acherraq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,30 +92,9 @@ double	ft_atod(const char *str)
 }
 
 
-void	graphe_mandlebrot_init(t_fractal *fractal)
-{
-	fractal_initialize(fractal, fractal->name);
-	fractal->zoom = 1;
-	fractal->move_x = 0;
-	fractal->move_y = 0;
-	fractal->max_iter = 100;
-	fractal->color = 0x000C17EA;
-	draw_mandelbrot(fractal);
-}
 
-void	graphe_julia_init(t_fractal *fractal, double c_re, double c_im)
-{
-	fractal_initialize(fractal, fractal->name);
-	fractal->zoom = 1;
-	fractal->move_x = 0;
-	fractal->move_y = 0;
-	fractal->max_iter = 100;
-	fractal->color = 0x000C17EA;
-	fractal->c_im = c_im;
-	fractal->c_re = c_re;
-	draw_julia(fractal);
 
-}
+
 
 
 void	fractal_initialize(t_fractal *fractal, char *name)
@@ -144,60 +123,12 @@ void	fractal_initialize(t_fractal *fractal, char *name)
 	fractal->addr = (int *)mlx_get_data_addr(fractal->image, &fractal->bits_per_pixel, &fractal->line_length, &fractal->endian);
 }
 
-void	draw_mandelbrot(t_fractal *fractal)
-{
-	int x;
-	int y;
-	
-	y = 0;
-	while (y < fractal->height)
-	{
-		x = 0;
-		while (x < fractal->width)
-		{
-			calcule_pixel_mandelbrot(fractal, x, y);
-			x++;	
-		}
-		y++;
-	}
-	mlx_put_image_to_window(fractal->mlx, fractal->window, fractal->image, 0 , 0);
-	
-}
-
-void calcule_pixel_mandelbrot(t_fractal *fractal, int x, int y)
-{
-	double z_re;
-	double z_im;
-	double tmp;
-	int i;
-
-	z_im = 0;
-	z_re = 0;
-	i = 0;
-	fractal->c_re = map(x, -2, 2, fractal->width) * fractal->zoom + fractal->move_x;
-	fractal->c_im = map(y, 2, -2, fractal->height) * fractal->zoom + fractal->move_y;
-	while (z_re * z_re + z_im * z_im < 4 && i < fractal->max_iter)
-	{
-		tmp = z_re;
-		z_re = z_re * z_re - z_im * z_im + fractal->c_re;
-		z_im = 2 * z_im * tmp + fractal->c_im;
-		i++;
-	}
-	if (i == fractal->max_iter)
-		fractal->addr[y * fractal->width + x] = 0x00000000;
-	else
-		fractal->addr[y * fractal->width + x] = i * fractal->color;
-	
-	
-}
-
 double	map(double unscated_num, double new_min, double new_max, double old_max)
 {
 	double	old_min;
 	
 	old_min = 0;
-	return ((new_max - new_min) * (unscated_num - old_min) / (old_max - old_min) + new_min);
-	
+	return ((new_max - new_min) * (unscated_num - old_min) / (old_max - old_min) + new_min);	
 }
 
 char	*ft_tolow(char *str)

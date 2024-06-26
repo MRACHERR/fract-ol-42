@@ -45,3 +45,17 @@ void calcule_pixel_julia(t_fractal *fractal, int x, int y)
 		fractal->addr[y * fractal->width + x] = i * fractal->color;
 
 }
+
+void	graphe_julia_init(t_fractal *fractal, double c_re, double c_im)
+{
+	fractal_initialize(fractal, fractal->name);
+	fractal->zoom = 1;
+	fractal->move_x = 0;
+	fractal->move_y = 0;
+	fractal->max_iter = 100;
+	fractal->color = 0x000C17EA;
+	fractal->c_im = c_im;
+	fractal->c_re = c_re;
+	draw_julia(fractal);
+
+}

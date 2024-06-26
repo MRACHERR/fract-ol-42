@@ -6,12 +6,12 @@
 #    By: acherraq <acherraq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/08 17:11:54 by acherraq          #+#    #+#              #
-#    Updated: 2024/06/26 16:22:13 by acherraq         ###   ########.fr        #
+#    Updated: 2024/06/26 17:16:50 by acherraq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractol
-SOURCES = fractol.c utils.c julia.c hooks.c
+SOURCES = fractol.c utils.c julia.c hooks.c mandelbrot.c
 OBJECTS = $(SOURCES:.c=.o)
 
 CC = cc
