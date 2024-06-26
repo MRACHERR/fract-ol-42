@@ -6,7 +6,7 @@
 /*   By: acherraq <acherraq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 17:12:04 by acherraq          #+#    #+#             */
-/*   Updated: 2024/06/26 17:06:33 by acherraq         ###   ########.fr       */
+/*   Updated: 2024/06/26 18:40:42 by acherraq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 # include "printf/ft_printf.h"
 # include <limits.h>
 # include <math.h>
+# define ERROR_MSG "Usage: \n\t./fractol mandelbrot\n \
+	./fractol julia [c_real] [c_imaginary]\n"
+
 typedef struct s_fractal
 {
 	char	*name;
@@ -37,9 +40,6 @@ typedef struct s_fractal
 	int		line_length;
 	int		endian;
 }			t_fractal;
-
-# define ERROR_message "Usage: \n\t./fractol mandelbrot\n \
-	./fractol julia [c_real] [c_imaginary]\n"
 void		handle_errors(char *error_msg);
 int			ft_strcmp(const char *s1, const char *s2);
 int			ft_valid_nb(char *str);

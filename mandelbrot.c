@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: acherraq <acherraq@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/26 18:33:23 by acherraq          #+#    #+#             */
+/*   Updated: 2024/06/26 18:33:24 by acherraq         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 
 void	calcule_pixel_mandelbrot(t_fractal *fractal, int x, int y)
@@ -43,8 +55,8 @@ void	draw_mandelbrot(t_fractal *fractal)
 		}
 		y++;
 	}
-	mlx_put_image_to_window(fractal->mlx, fractal->window, fractal->image, 0,
-			0);
+	mlx_put_image_to_window(fractal->mlx, fractal->window,
+		fractal->image, 0, 0);
 }
 
 void	graphe_mandlebrot_init(t_fractal *fractal)

@@ -6,7 +6,7 @@
 /*   By: acherraq <acherraq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 17:12:09 by acherraq          #+#    #+#             */
-/*   Updated: 2024/06/26 17:18:54 by acherraq         ###   ########.fr       */
+/*   Updated: 2024/06/26 18:38:06 by acherraq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,8 @@ double	ft_atod(const char *str)
 	sign = 1;
 	i = 0;
 	j = 1;
-	// if (str[i] == '-' || str[i] == '+')
-	// 	sign = 44 - str[i++];
 	if (str[i] == '-' || str[i] == '+')
-	{
-		sign = (str[i] == '-') ? -1 : 1;
-		i++;
-	}
+		sign = 44 - str[i++];
 	while (str[i] && str[i] != '.')
 		res = res * 10 + str[i++] - '0';
 	if (str[i++] == '.')
@@ -118,27 +113,4 @@ void	fractal_initialize(t_fractal *fractal, char *name)
 	}
 	fractal->addr = (int *)mlx_get_data_addr(fractal->image,
 			&fractal->bits_per_pixel, &fractal->line_length, &fractal->endian);
-}
-
-double	map(double unscated_num, double new_min, double new_max, double old_max)
-{
-	double	old_min;
-
-	old_min = 0;
-	return ((new_max - new_min) * (unscated_num - old_min) / (old_max - old_min)
-		+ new_min);
-}
-
-char	*ft_tolow(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] >= 'A' && str[i] <= 'Z')
-			str[i] += 32;
-		i++;
-	}
-	return (str);
 }

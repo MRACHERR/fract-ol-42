@@ -6,7 +6,7 @@
 /*   By: acherraq <acherraq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 17:12:00 by acherraq          #+#    #+#             */
-/*   Updated: 2024/06/26 17:08:22 by acherraq         ###   ########.fr       */
+/*   Updated: 2024/06/26 18:41:15 by acherraq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	fractal_init(t_fractal *fractal, int argc, char **argv)
 	if (!ft_strcmp(fractal->name, "mandelbrot") && argc == 2)
 		graphe_mandlebrot_init(fractal);
 	else if (!ft_strcmp(fractal->name, "julia") && argc == 4
-			&& ft_valid_nb(argv[2]) && ft_valid_nb(argv[3]))
+		&& ft_valid_nb(argv[2]) && ft_valid_nb(argv[3]))
 	{
 		if (ft_atod(argv[2]) >= INT_MAX || ft_atod(argv[3]) >= INT_MAX
 			|| ft_atod(argv[2]) <= INT_MIN || ft_atod(argv[3]) <= INT_MIN)
@@ -47,7 +47,7 @@ void	fractal_init(t_fractal *fractal, int argc, char **argv)
 	else
 	{
 		free(fractal);
-		handle_errors(ERROR_message);
+		handle_errors(ERROR_MSG);
 	}
 }
 
@@ -55,5 +55,5 @@ void	arg_verify(int argc, char **argv)
 {
 	(void)**argv;
 	if (argc != 2 && argc != 4)
-		handle_errors(ERROR_message);
+		handle_errors(ERROR_MSG);
 }

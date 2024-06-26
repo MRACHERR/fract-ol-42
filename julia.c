@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   julia.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: acherraq <acherraq@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/26 18:30:00 by acherraq          #+#    #+#             */
+/*   Updated: 2024/06/26 18:30:01 by acherraq         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 
 void	draw_julia(t_fractal *fractal)
@@ -15,8 +27,8 @@ void	draw_julia(t_fractal *fractal)
 			x++;
 		}
 		y++;
-		mlx_put_image_to_window(fractal->mlx, fractal->window, fractal->image,
-				0, 0);
+		mlx_put_image_to_window(fractal->mlx,
+			fractal->window, fractal->image, 0, 0);
 	}
 }
 
