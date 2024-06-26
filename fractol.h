@@ -44,7 +44,6 @@ void	handle_errors(char *error_msg);
 int	ft_strcmp(const char *s1, const char *s2);
 int	ft_valid_nb(char *str);
 void graphe_mandlebrot_init(t_fractal *fractal);
-// void	graphe_julia_init(t_fractal *fractal);
 void	draw_mandelbrot(t_fractal *fractal);
 void arg_verify(int argc, char **argv);
 char	*ft_tolow(char *str);
@@ -55,6 +54,8 @@ void	fractal_initialize(t_fractal *fractal, char *name);
 void	draw_mandelbrot(t_fractal *fractal);
 void calcule_pixel_mandelbrot(t_fractal *fractal, int x, int y);
 double	map(double unscated_num, double new_min, double new_max, double old_max);
+void draw_julia(t_fractal fractal);
+void	graphe_julia_init(t_fractal *fractal, double c_re, double c_im);
 # define WINDOW_WIDTH 800
 # define WINDOW_HEIGHT 800
 #endif

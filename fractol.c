@@ -43,7 +43,7 @@ void fractal_init(t_fractal *fractal, int argc,char **argv)
             free(fractal);
             handle_errors("invalid number \n");            
         }
-        // graphe_julia_init(fractal);
+        graphe_julia_init(fractal, ft_atod(argv[2]), ft_atod(argv[3]));
     }
     else
     {
