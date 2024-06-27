@@ -6,7 +6,7 @@
 /*   By: acherraq <acherraq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 17:12:00 by acherraq          #+#    #+#             */
-/*   Updated: 2024/06/26 18:41:15 by acherraq         ###   ########.fr       */
+/*   Updated: 2024/06/27 10:47:45 by acherraq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main(int argc, char **argv)
 		handle_errors("malloc error\n");
 	fractal->name = ft_tolow(argv[1]);
 	fractal_init(fractal, argc, argv);
+	mlx_key_hook(fractal->window, key_hook, fractal);
 	mlx_mouse_hook(fractal->window, mouse_hook, fractal);
 	mlx_hook(fractal->window, 17, 0, close_window, fractal);
 	mlx_loop(fractal->mlx);
@@ -30,14 +31,13 @@ int	main(int argc, char **argv)
 
 void	fractal_init(t_fractal *fractal, int argc, char **argv)
 {
-	ft_printf("%s\n", fractal->name);
 	if (!ft_strcmp(fractal->name, "mandelbrot") && argc == 2)
 		graphe_mandlebrot_init(fractal);
 	else if (!ft_strcmp(fractal->name, "julia") && argc == 4
 		&& ft_valid_nb(argv[2]) && ft_valid_nb(argv[3]))
 	{
-		if (ft_atod(argv[2]) >= INT_MAX || ft_atod(argv[3]) >= INT_MAX
-			|| ft_atod(argv[2]) <= INT_MIN || ft_atod(argv[3]) <= INT_MIN)
+		if (ft_atod(argv[2]) > INT_MAX || ft_atod(argv[3]) > INT_MAX
+			|| ft_atod(argv[2]) < INT_MIN || ft_atod(argv[3]) < INT_MIN)
 		{
 			free(fractal);
 			handle_errors("invalid number \n");

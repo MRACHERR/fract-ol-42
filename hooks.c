@@ -6,7 +6,7 @@
 /*   By: acherraq <acherraq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 18:28:35 by acherraq          #+#    #+#             */
-/*   Updated: 2024/06/26 18:28:36 by acherraq         ###   ########.fr       */
+/*   Updated: 2024/06/27 10:46:40 by acherraq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,7 @@ int	mouse_hook(int button, int x, int y, t_fractal *fractal)
 int	key_hook(int keycode, t_fractal *fractal)
 {
 	if (keycode == 53)
-	{
-		mlx_destroy_window(fractal->mlx, fractal->window);
-		free(fractal);
-		exit(1);
-	}
+		close_window(fractal);
 	return (0);
 }
 
@@ -50,6 +46,5 @@ int	close_window(t_fractal *fractal)
 {
 	mlx_destroy_window(fractal->mlx, fractal->window);
 	free(fractal);
-	return (0);
 	exit(1);
 }
