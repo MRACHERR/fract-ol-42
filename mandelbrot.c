@@ -6,7 +6,7 @@
 /*   By: acherraq <acherraq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 18:33:23 by acherraq          #+#    #+#             */
-/*   Updated: 2024/06/26 18:33:24 by acherraq         ###   ########.fr       */
+/*   Updated: 2024/06/27 14:51:01 by acherraq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	graphe_mandlebrot_init(t_fractal *fractal)
 	fractal->zoom = 1;
 	fractal->move_x = 0;
 	fractal->move_y = 0;
-	fractal->max_iter = 100;
+	fractal->max_iter = 200;
 	fractal->color = 0x000C17EA;
 	draw_mandelbrot(fractal);
 }

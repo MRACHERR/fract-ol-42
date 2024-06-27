@@ -6,7 +6,7 @@
 /*   By: acherraq <acherraq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 18:39:06 by acherraq          #+#    #+#             */
-/*   Updated: 2024/06/26 18:39:07 by acherraq         ###   ########.fr       */
+/*   Updated: 2024/06/27 14:42:53 by acherraq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,21 @@ char	*ft_tolow(char *str)
 		i++;
 	}
 	return (str);
+}
+
+void	skip_whitespace(char **s)
+{
+	while (**s == ' ' || (**s >= '\t' && **s <= '\r'))
+	{
+		(*s)++;
+	}
+}
+
+void	handle_errors_free(char *error_msg, t_fractal *fractal)
+{
+	free(fractal->mlx);
+	write(STDERR_FILENO, "Error: ", 7);
+	write(STDERR_FILENO, error_msg, ft_strlen(error_msg));
+	write(STDERR_FILENO, "\n", 1);
+	exit(1);
 }

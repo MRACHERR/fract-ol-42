@@ -6,7 +6,7 @@
 /*   By: acherraq <acherraq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 18:30:00 by acherraq          #+#    #+#             */
-/*   Updated: 2024/06/26 18:30:01 by acherraq         ###   ########.fr       */
+/*   Updated: 2024/06/27 14:51:12 by acherraq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	graphe_julia_init(t_fractal *fractal, double c_re, double c_im)
 	fractal->zoom = 1;
 	fractal->move_x = 0;
 	fractal->move_y = 0;
-	fractal->max_iter = 100;
+	fractal->max_iter = 200;
 	fractal->color = 0x000C17EA;
 	fractal->c_im = c_im;
 	fractal->c_re = c_re;

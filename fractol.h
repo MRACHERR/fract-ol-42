@@ -6,7 +6,7 @@
 /*   By: acherraq <acherraq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 17:12:04 by acherraq          #+#    #+#             */
-/*   Updated: 2024/06/27 10:47:14 by acherraq         ###   ########.fr       */
+/*   Updated: 2024/06/27 14:42:02 by acherraq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ void		calcule_pixel_julia(t_fractal *fractal, int x, int y);
 int			mouse_hook(int button, int x, int y, t_fractal *fractal);
 int			close_window(t_fractal *fractal);
 int			key_hook(int keycode, t_fractal *fractal);
+void		skip_whitespace(char **s);
+void		handle_errors_free(char *error_msg, t_fractal *fractal);
 # define WINDOW_WIDTH 800
 # define WINDOW_HEIGHT 800
 #endif
